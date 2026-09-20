@@ -1,20 +1,28 @@
 package com.karyarina.labs
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        val editTextSize = findViewById<EditText>(R.id.editTextSize)
+        val textViewResult = findViewById<TextView>(R.id.textViewResult)
+        val buttonGenerate = findViewById<Button>(R.id.buttonGenerate)
+        editTextSize.setText("8")
+
+        buttonGenerate.setOnClickListener {
+            var size = editTextSize.text.toString().toIntOrNull()
+            if (size == null || size <= 0) {
+                size = 8
+            }
+            if (size > 30) {
+                size = 30
+            }
         }
     }
 }
