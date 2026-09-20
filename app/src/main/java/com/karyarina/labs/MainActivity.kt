@@ -23,6 +23,9 @@ class MainActivity : AppCompatActivity() {
             if (size > 30) {
                 size = 30
             }
+            val sourceList = ListNormalizer.generateRandomList(size, 1, 100)
+            val normalizedList = ListNormalizer.normalizeByMax(sourceList)
+            textViewResult.text = ListNormalizer.buildResultText(sourceList, normalizedList)
         }
     }
 }
