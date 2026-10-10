@@ -3,10 +3,6 @@ package com.karyarina.labs.util
 import android.graphics.Bitmap
 import kotlin.math.roundToInt
 
-/**
- * Уменьшает картинку до размера схемы и сокращает палитру методом median cut,
- * чтобы каждая клетка соответствовала одному цвету нити.
- */
 object ImageToGridConverter {
 
     fun convert(source: Bitmap, targetWidth: Int, colorCount: Int): Bitmap {

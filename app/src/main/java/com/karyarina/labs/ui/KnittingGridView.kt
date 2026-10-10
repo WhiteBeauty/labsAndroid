@@ -7,16 +7,12 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.RectF
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.ScaleGestureDetector
 import android.view.View
 
-/**
- * Рисует схему вязания на Canvas: слева флажки для отметки рядов,
- * в центре сама сетка (один пиксель картинки = одна клетка), справа номера рядов.
- * Поддерживает увеличение щипком и перемещение пальцем.
- */
 class KnittingGridView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null
@@ -30,44 +26,52 @@ class KnittingGridView @JvmOverloads constructor(
 
     var onRowToggle: ((Int) -> Unit)? = null
 
-    private val baseCellSize = 40f
+    private val baseCellSize = TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_DIP, 44f, resources.displayMetrics
+    )
     private val checkboxColumnWidth = baseCellSize
 
     private var scaleFactor = 1f
     private var translateX = 0f
     private var translateY = 0f
 
+    private fun dpToPx(dp: Float) =
+        TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, resources.displayMetrics)
+
+    private fun spToPx(sp: Float) =
+        TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, resources.displayMetrics)
+
     private val cellPaint = Paint()
     private val checkboxPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.STROKE
-        strokeWidth = 3f
+        strokeWidth = dpToPx(1.5f)
         color = Color.DKGRAY
     }
     private val checkmarkPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.STROKE
-        strokeWidth = 5f
+        strokeWidth = dpToPx(2f)
         color = Color.DKGRAY
     }
     private val overlayPaint = Paint().apply { color = Color.argb(140, 255, 255, 255) }
     private val strikePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        strokeWidth = 3f
+        strokeWidth = dpToPx(1.5f)
         color = Color.DKGRAY
     }
     private val currentRowPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.STROKE
-        strokeWidth = 5f
+        strokeWidth = dpToPx(2f)
         color = Color.parseColor("#D9A441")
     }
     private val rowNumberPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         color = Color.DKGRAY
-        textSize = 28f
+        textSize = spToPx(16f)
     }
 
     private val scaleDetector = ScaleGestureDetector(
         context,
         object : ScaleGestureDetector.SimpleOnScaleGestureListener() {
             override fun onScale(detector: ScaleGestureDetector): Boolean {
-                scaleFactor = (scaleFactor * detector.scaleFactor).coerceIn(0.5f, 5f)
+                scaleFactor = (scaleFactor * detector.scaleFactor).coerceIn(0.15f, 5f)
                 invalidate()
                 return true
             }

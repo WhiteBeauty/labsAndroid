@@ -11,6 +11,8 @@ import com.karyarina.labs.R
 import com.karyarina.labs.data.AppDatabase
 import com.karyarina.labs.data.Pattern
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -70,15 +72,16 @@ class KnittingActivity : AppCompatActivity() {
         gridView.setCurrentRow(currentRow)
     }
 
+    @OptIn(DelicateCoroutinesApi::class)
     private fun savePattern() {
         val current = pattern ?: return
-        lifecycleScope.launch {
-            val updated = current.copy(
-                checkedRows = checkedRows.sorted().joinToString(","),
-                updatedAt = System.currentTimeMillis()
-            )
-            AppDatabase.getInstance(this@KnittingActivity).patternDao().update(updated)
-            pattern = updated
+        val updated = current.copy(
+            checkedRows = checkedRows.sorted().joinToString(","),
+            updatedAt = System.currentTimeMillis()
+        )
+        pattern = updated
+        GlobalScope.launch(Dispatchers.IO) {
+            AppDatabase.getInstance(applicationContext).patternDao().update(updated)
         }
     }
 
