@@ -1,7 +1,9 @@
 <resources>
-    <string name="app_name">labs</string>
-    <string name="title_task">Вариант 5: нормализация списка по его максимальному элементу</string>
-    <string name="hint_size">Размер списка (1–30)</string>
-    <string name="button_generate">нормализовать</string>
-    <string name="placeholder_result">Результат будет здесь после нажатия</string>
+    <string name="app_name">StitchGrid</string>
+
+    <string name="main_screen_title">Мои схемы</string>
+    <string name="empty_state_text">Создайте первую схему</string>
+    <string name="content_description_add_pattern">Новая схема</string>
+    <string name="pattern_progress_format">%1$d из %2$d рядов</string>
+    <string name="not_implemented_yet">Эта часть приложения ещё не готова</string>
 </resources>
