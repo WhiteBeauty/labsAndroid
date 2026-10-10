@@ -1,4 +1,4 @@
-package com.karyarina.labs
+package com.karyarina.labs.ui
 
 import android.graphics.BitmapFactory
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.karyarina.labs.R
 import com.karyarina.labs.data.Pattern
 
 class PatternAdapter(

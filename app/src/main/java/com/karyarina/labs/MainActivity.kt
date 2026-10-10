@@ -10,6 +10,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.karyarina.labs.data.AppDatabase
+import com.karyarina.labs.ui.CreatePatternActivity
+import com.karyarina.labs.ui.PatternAdapter
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {

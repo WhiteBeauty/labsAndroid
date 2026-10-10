@@ -1,4 +1,4 @@
-package com.karyarina.labs
+package com.karyarina.labs.ui
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -16,8 +16,10 @@ import androidx.lifecycle.lifecycleScope
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
+import com.karyarina.labs.R
 import com.karyarina.labs.data.AppDatabase
 import com.karyarina.labs.data.Pattern
+import com.karyarina.labs.util.ImageToGridConverter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

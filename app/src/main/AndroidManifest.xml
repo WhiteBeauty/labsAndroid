@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CreatePatternActivity"
+            android:name=".ui.CreatePatternActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity"
             android:windowSoftInputMode="adjustResize" />

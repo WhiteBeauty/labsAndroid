@@ -1,4 +1,4 @@
-package com.karyarina.labs
+package com.karyarina.labs.util
 
 import android.graphics.Bitmap
 import kotlin.math.roundToInt
