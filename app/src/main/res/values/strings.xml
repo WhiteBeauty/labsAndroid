@@ -6,4 +6,12 @@
     <string name="content_description_add_pattern">Новая схема</string>
     <string name="pattern_progress_format">%1$d из %2$d рядов</string>
     <string name="not_implemented_yet">Эта часть приложения ещё не готова</string>
+
+    <string name="title_create_pattern">Новая схема</string>
+    <string name="hint_pattern_name">Название</string>
+    <string name="button_pick_image">Выбрать картинку</string>
+    <string name="width_label">Ширина схемы в петлях</string>
+    <string name="colors_label">Количество цветов</string>
+    <string name="button_save">Сохранить</string>
+    <string name="error_name_required">Укажите название</string>
 </resources>

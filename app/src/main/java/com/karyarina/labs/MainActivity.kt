@@ -1,5 +1,6 @@
 package com.karyarina.labs
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -29,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
 
         fabAddPattern.setOnClickListener {
-            Toast.makeText(this, R.string.not_implemented_yet, Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, CreatePatternActivity::class.java))
         }
 
         val patternDao = AppDatabase.getInstance(this).patternDao()
