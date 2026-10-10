@@ -4,13 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.karyarina.labs.data.AppDatabase
 import com.karyarina.labs.ui.CreatePatternActivity
+import com.karyarina.labs.ui.KnittingActivity
 import com.karyarina.labs.ui.PatternAdapter
 import kotlinx.coroutines.launch
 
@@ -27,7 +27,9 @@ class MainActivity : AppCompatActivity() {
         val fabAddPattern = findViewById<FloatingActionButton>(R.id.fabAddPattern)
 
         adapter = PatternAdapter { pattern ->
-            Toast.makeText(this, R.string.not_implemented_yet, Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, KnittingActivity::class.java)
+                .putExtra(KnittingActivity.EXTRA_PATTERN_ID, pattern.id)
+            startActivity(intent)
         }
         recyclerView.adapter = adapter
 
