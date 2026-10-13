@@ -13,7 +13,8 @@ import com.karyarina.labs.R
 import com.karyarina.labs.data.Pattern
 
 class PatternAdapter(
-    private val onPatternClick: (Pattern) -> Unit
+    private val onPatternClick: (Pattern) -> Unit,
+    private val onPatternLongClick: (Pattern) -> Unit
 ) : ListAdapter<Pattern, PatternAdapter.PatternViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatternViewHolder {
@@ -23,7 +24,7 @@ class PatternAdapter(
     }
 
     override fun onBindViewHolder(holder: PatternViewHolder, position: Int) {
-        holder.bind(getItem(position), onPatternClick)
+        holder.bind(getItem(position), onPatternClick, onPatternLongClick)
     }
 
     class PatternViewHolder(itemView: android.view.View) : RecyclerView.ViewHolder(itemView) {
@@ -32,7 +33,11 @@ class PatternAdapter(
         private val textViewProgress: TextView = itemView.findViewById(R.id.textViewProgress)
         private val progressBar: ProgressBar = itemView.findViewById(R.id.progressBar)
 
-        fun bind(pattern: Pattern, onPatternClick: (Pattern) -> Unit) {
+        fun bind(
+            pattern: Pattern,
+            onPatternClick: (Pattern) -> Unit,
+            onPatternLongClick: (Pattern) -> Unit
+        ) {
             textViewName.text = pattern.name
 
             val checkedCount = pattern.checkedRows.split(",").count { it.isNotBlank() }
@@ -48,6 +53,10 @@ class PatternAdapter(
             imageViewThumbnail.setImageBitmap(thumbnail)
 
             itemView.setOnClickListener { onPatternClick(pattern) }
+            itemView.setOnLongClickListener {
+                onPatternLongClick(pattern)
+                true
+            }
         }
     }
 

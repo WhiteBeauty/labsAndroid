@@ -16,4 +16,12 @@
 
     <string name="title_knitting">Вязание</string>
     <string name="knitting_row_info_format">Ряд %1$d из %2$d</string>
+
+    <string name="action_rename">Переименовать</string>
+    <string name="action_reset_progress">Сбросить прогресс</string>
+    <string name="action_delete">Удалить</string>
+    <string name="button_confirm">Да</string>
+    <string name="button_cancel">Отмена</string>
+    <string name="confirm_reset_message">Сбросить прогресс по схеме «%1$s»?</string>
+    <string name="confirm_delete_message">Удалить схему «%1$s»? Это действие нельзя отменить.</string>
 </resources>
