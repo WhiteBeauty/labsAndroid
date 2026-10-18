@@ -1,4 +1,4 @@
-package com.karyarina.labs.ui
+package com.karyarina.labs.ui.create
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory

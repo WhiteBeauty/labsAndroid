@@ -16,6 +16,9 @@
 
     <string name="title_knitting">Вязание</string>
     <string name="knitting_row_info_format">Ряд %1$d из %2$d</string>
+    <string name="knitting_rows_done_format">готово рядов: %1$d</string>
+    <string name="pattern_colors_legend_title">Цвета схемы</string>
+    <string name="pattern_colors_legend_caption">петель каждого цвета</string>
 
     <string name="action_rename">Переименовать</string>
     <string name="action_reset_progress">Сбросить прогресс</string>
@@ -36,5 +39,7 @@
     <string name="theme_system">Как в системе</string>
     <string name="direction_top_to_bottom">Сверху вниз</string>
     <string name="direction_bottom_to_top">Снизу вверх</string>
+    <string name="setting_show_row_numbers">Номера рядов</string>
+    <string name="setting_show_grid_lines">Линии сетки</string>
     <string name="about_version_format">Версия %1$s</string>
 </resources>

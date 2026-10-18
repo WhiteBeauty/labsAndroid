@@ -1,4 +1,4 @@
-package com.karyarina.labs.ui
+package com.karyarina.labs.ui.settings
 
 import android.os.Bundle
 import android.widget.TextView
@@ -6,6 +6,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.materialswitch.MaterialSwitch
 import com.karyarina.labs.R
 import com.karyarina.labs.data.AppPreferences
 
@@ -22,12 +23,24 @@ class SettingsActivity : AppCompatActivity() {
         val textViewThemeValue = findViewById<TextView>(R.id.textViewThemeValue)
         val rowDirection = findViewById<android.view.View>(R.id.rowDirection)
         val textViewDirectionValue = findViewById<TextView>(R.id.textViewDirectionValue)
+        val switchShowRowNumbers = findViewById<MaterialSwitch>(R.id.switchShowRowNumbers)
+        val switchShowGridLines = findViewById<MaterialSwitch>(R.id.switchShowGridLines)
         val textViewAbout = findViewById<TextView>(R.id.textViewAbout)
 
         updateThemeValue(textViewThemeValue)
         updateDirectionValue(textViewDirectionValue)
         rowTheme.setOnClickListener { showThemeDialog(textViewThemeValue) }
         rowDirection.setOnClickListener { showDirectionDialog(textViewDirectionValue) }
+
+        switchShowRowNumbers.isChecked = AppPreferences.isShowRowNumbers(this)
+        switchShowRowNumbers.setOnCheckedChangeListener { _, checked ->
+            AppPreferences.setShowRowNumbers(this, checked)
+        }
+
+        switchShowGridLines.isChecked = AppPreferences.isShowGridLines(this)
+        switchShowGridLines.setOnCheckedChangeListener { _, checked ->
+            AppPreferences.setShowGridLines(this, checked)
+        }
 
         val versionName = packageManager.getPackageInfo(packageName, 0).versionName
         textViewAbout.text = "${getString(R.string.app_name)}\n" +

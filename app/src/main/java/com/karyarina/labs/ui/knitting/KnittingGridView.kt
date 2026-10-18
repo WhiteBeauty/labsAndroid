@@ -1,4 +1,4 @@
-package com.karyarina.labs.ui
+package com.karyarina.labs.ui.knitting
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -12,6 +12,7 @@ import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.ScaleGestureDetector
 import android.view.View
+import kotlin.math.roundToInt
 
 class KnittingGridView @JvmOverloads constructor(
     context: Context,
@@ -24,6 +25,8 @@ class KnittingGridView @JvmOverloads constructor(
     private var checkedRows: Set<Int> = emptySet()
     private var currentRow = 1
     private var reversed = false
+    private var showRowNumbers = true
+    private var showGridLines = true
 
     var onRowToggle: ((Int) -> Unit)? = null
 
@@ -66,6 +69,11 @@ class KnittingGridView @JvmOverloads constructor(
     private val rowNumberPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         color = Color.DKGRAY
         textSize = spToPx(16f)
+    }
+    private val gridLinePaint = Paint().apply {
+        style = Paint.Style.STROKE
+        strokeWidth = dpToPx(0.5f)
+        color = Color.argb(60, 0, 0, 0)
     }
 
     private val scaleDetector = ScaleGestureDetector(
@@ -124,6 +132,16 @@ class KnittingGridView @JvmOverloads constructor(
         invalidate()
     }
 
+    fun setShowRowNumbers(show: Boolean) {
+        showRowNumbers = show
+        invalidate()
+    }
+
+    fun setShowGridLines(show: Boolean) {
+        showGridLines = show
+        invalidate()
+    }
+
     override fun onTouchEvent(event: MotionEvent): Boolean {
         scaleDetector.onTouchEvent(event)
         gestureDetector.onTouchEvent(event)
@@ -170,11 +188,17 @@ class KnittingGridView @JvmOverloads constructor(
                 )
             }
 
+            val cellTop = top.roundToInt().toFloat()
+            val cellBottom = bottom.roundToInt().toFloat()
             val imageRow = if (reversed) rowCount - 1 - row else row
             for (col in 0 until columnCount) {
-                val left = checkboxColumnWidth + col * baseCellSize
+                val cellLeft = (checkboxColumnWidth + col * baseCellSize).roundToInt().toFloat()
+                val cellRight = (checkboxColumnWidth + (col + 1) * baseCellSize).roundToInt().toFloat()
                 cellPaint.color = bmp.getPixel(col, imageRow)
-                canvas.drawRect(left, top, left + baseCellSize, bottom, cellPaint)
+                canvas.drawRect(cellLeft, cellTop, cellRight, cellBottom, cellPaint)
+                if (showGridLines) {
+                    canvas.drawRect(cellLeft, cellTop, cellRight, cellBottom, gridLinePaint)
+                }
             }
 
             val gridRight = checkboxColumnWidth + columnCount * baseCellSize
@@ -190,7 +214,9 @@ class KnittingGridView @JvmOverloads constructor(
                 canvas.drawRect(checkboxColumnWidth, top, gridRight, bottom, currentRowPaint)
             }
 
-            canvas.drawText(rowNumber.toString(), gridRight + 10f, top + baseCellSize * 0.7f, rowNumberPaint)
+            if (showRowNumbers) {
+                canvas.drawText(rowNumber.toString(), gridRight + 10f, top + baseCellSize * 0.7f, rowNumberPaint)
+            }
         }
 
         canvas.restore()

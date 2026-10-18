@@ -1,4 +1,4 @@
-package com.karyarina.labs.ui
+package com.karyarina.labs.ui.main
 
 import android.graphics.BitmapFactory
 import android.view.LayoutInflater

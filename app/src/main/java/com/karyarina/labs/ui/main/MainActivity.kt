@@ -1,4 +1,4 @@
-package com.karyarina.labs
+package com.karyarina.labs.ui.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,12 +11,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.karyarina.labs.R
 import com.karyarina.labs.data.AppDatabase
 import com.karyarina.labs.data.Pattern
-import com.karyarina.labs.ui.CreatePatternActivity
-import com.karyarina.labs.ui.KnittingActivity
-import com.karyarina.labs.ui.PatternAdapter
-import com.karyarina.labs.ui.SettingsActivity
+import com.karyarina.labs.ui.create.CreatePatternActivity
+import com.karyarina.labs.ui.knitting.KnittingActivity
+import com.karyarina.labs.ui.settings.SettingsActivity
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope

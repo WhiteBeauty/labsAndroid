@@ -1,7 +1,12 @@
-package com.karyarina.labs.ui
+package com.karyarina.labs.ui.knitting
 
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +16,7 @@ import com.karyarina.labs.R
 import com.karyarina.labs.data.AppDatabase
 import com.karyarina.labs.data.AppPreferences
 import com.karyarina.labs.data.Pattern
+import com.karyarina.labs.util.ImageToGridConverter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -21,8 +27,10 @@ class KnittingActivity : AppCompatActivity() {
 
     private lateinit var toolbar: MaterialToolbar
     private lateinit var textViewRowInfo: TextView
+    private lateinit var textViewRowsDone: TextView
     private lateinit var progressBar: ProgressBar
     private lateinit var gridView: KnittingGridView
+    private lateinit var colorLegendContainer: LinearLayout
 
     private var pattern: Pattern? = null
     private var checkedRows = mutableSetOf<Int>()
@@ -33,12 +41,16 @@ class KnittingActivity : AppCompatActivity() {
 
         toolbar = findViewById(R.id.toolbar)
         textViewRowInfo = findViewById(R.id.textViewRowInfo)
+        textViewRowsDone = findViewById(R.id.textViewRowsDone)
         progressBar = findViewById(R.id.progressBar)
         gridView = findViewById(R.id.knittingGridView)
+        colorLegendContainer = findViewById(R.id.colorLegendContainer)
 
         toolbar.setNavigationOnClickListener { finish() }
         gridView.onRowToggle = { row -> toggleRow(row) }
         gridView.setReversed(AppPreferences.isReverseDirection(this))
+        gridView.setShowRowNumbers(AppPreferences.isShowRowNumbers(this))
+        gridView.setShowGridLines(AppPreferences.isShowGridLines(this))
 
         val patternId = intent.getLongExtra(EXTRA_PATTERN_ID, -1)
         lifecycleScope.launch {
@@ -53,6 +65,9 @@ class KnittingActivity : AppCompatActivity() {
             val bitmap = withContext(Dispatchers.IO) { BitmapFactory.decodeFile(loaded.gridPath) }
             gridView.setData(bitmap, loaded.height, checkedRows)
             updateHeader(loaded.height)
+            if (bitmap != null) {
+                showColorLegend(bitmap)
+            }
         }
     }
 
@@ -69,9 +84,22 @@ class KnittingActivity : AppCompatActivity() {
     private fun updateHeader(totalRows: Int) {
         val currentRow = (1..totalRows).firstOrNull { it !in checkedRows } ?: totalRows
         textViewRowInfo.text = getString(R.string.knitting_row_info_format, currentRow, totalRows)
+        textViewRowsDone.text = getString(R.string.knitting_rows_done_format, checkedRows.size)
         progressBar.max = totalRows
         progressBar.progress = checkedRows.size
         gridView.setCurrentRow(currentRow)
+    }
+
+    private fun showColorLegend(bitmap: Bitmap) {
+        colorLegendContainer.removeAllViews()
+        val inflater = LayoutInflater.from(this)
+        for ((color, count) in ImageToGridConverter.countColors(bitmap)) {
+            val item = inflater.inflate(R.layout.item_color_count, colorLegendContainer, false)
+            val swatch = item.findViewById<View>(R.id.viewColorSwatch)
+            (swatch.background.mutate() as GradientDrawable).setColor(color)
+            item.findViewById<TextView>(R.id.textViewColorCount).text = count.toString()
+            colorLegendContainer.addView(item)
+        }
     }
 
     @OptIn(DelicateCoroutinesApi::class)

@@ -23,6 +23,17 @@ object ImageToGridConverter {
         return output
     }
 
+    fun countColors(bitmap: Bitmap): List<Pair<Int, Int>> {
+        val pixels = IntArray(bitmap.width * bitmap.height)
+        bitmap.getPixels(pixels, 0, bitmap.width, 0, 0, bitmap.width, bitmap.height)
+
+        val counts = LinkedHashMap<Int, Int>()
+        for (pixel in pixels) {
+            counts[pixel] = (counts[pixel] ?: 0) + 1
+        }
+        return counts.entries.sortedByDescending { it.value }.map { it.key to it.value }
+    }
+
     private fun buildPalette(pixels: IntArray, colorCount: Int): List<Int> {
         var buckets = listOf(pixels.indices.toMutableList())
 
