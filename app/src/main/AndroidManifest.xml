@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".data.StitchGridApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -28,6 +29,10 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.KnittingActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ui.SettingsActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
     </application>

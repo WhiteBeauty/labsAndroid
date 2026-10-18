@@ -23,6 +23,7 @@ class KnittingGridView @JvmOverloads constructor(
     private var columnCount = 0
     private var checkedRows: Set<Int> = emptySet()
     private var currentRow = 1
+    private var reversed = false
 
     var onRowToggle: ((Int) -> Unit)? = null
 
@@ -118,6 +119,11 @@ class KnittingGridView @JvmOverloads constructor(
         invalidate()
     }
 
+    fun setReversed(reversed: Boolean) {
+        this.reversed = reversed
+        invalidate()
+    }
+
     override fun onTouchEvent(event: MotionEvent): Boolean {
         scaleDetector.onTouchEvent(event)
         gestureDetector.onTouchEvent(event)
@@ -164,9 +170,10 @@ class KnittingGridView @JvmOverloads constructor(
                 )
             }
 
+            val imageRow = if (reversed) rowCount - 1 - row else row
             for (col in 0 until columnCount) {
                 val left = checkboxColumnWidth + col * baseCellSize
-                cellPaint.color = bmp.getPixel(col, row)
+                cellPaint.color = bmp.getPixel(col, imageRow)
                 canvas.drawRect(left, top, left + baseCellSize, bottom, cellPaint)
             }
 

@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import com.google.android.material.appbar.MaterialToolbar
 import com.karyarina.labs.R
 import com.karyarina.labs.data.AppDatabase
+import com.karyarina.labs.data.AppPreferences
 import com.karyarina.labs.data.Pattern
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -37,6 +38,7 @@ class KnittingActivity : AppCompatActivity() {
 
         toolbar.setNavigationOnClickListener { finish() }
         gridView.onRowToggle = { row -> toggleRow(row) }
+        gridView.setReversed(AppPreferences.isReverseDirection(this))
 
         val patternId = intent.getLongExtra(EXTRA_PATTERN_ID, -1)
         lifecycleScope.launch {

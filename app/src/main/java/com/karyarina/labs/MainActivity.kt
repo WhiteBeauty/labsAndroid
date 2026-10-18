@@ -9,12 +9,14 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.karyarina.labs.data.AppDatabase
 import com.karyarina.labs.data.Pattern
 import com.karyarina.labs.ui.CreatePatternActivity
 import com.karyarina.labs.ui.KnittingActivity
 import com.karyarina.labs.ui.PatternAdapter
+import com.karyarina.labs.ui.SettingsActivity
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -29,9 +31,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewPatterns)
         val emptyState = findViewById<TextView>(R.id.textViewEmptyState)
         val fabAddPattern = findViewById<FloatingActionButton>(R.id.fabAddPattern)
+
+        toolbar.inflateMenu(R.menu.menu_main)
+        toolbar.setOnMenuItemClickListener { item ->
+            if (item.itemId == R.id.action_settings) {
+                startActivity(Intent(this, SettingsActivity::class.java))
+                true
+            } else {
+                false
+            }
+        }
 
         adapter = PatternAdapter(
             onPatternClick = { pattern ->

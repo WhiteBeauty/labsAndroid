@@ -24,4 +24,17 @@
     <string name="button_cancel">Отмена</string>
     <string name="confirm_reset_message">Сбросить прогресс по схеме «%1$s»?</string>
     <string name="confirm_delete_message">Удалить схему «%1$s»? Это действие нельзя отменить.</string>
+
+    <string name="title_settings">Настройки</string>
+    <string name="section_appearance">Внешний вид</string>
+    <string name="section_pattern">Схема</string>
+    <string name="section_about">О приложении</string>
+    <string name="setting_theme">Тема</string>
+    <string name="setting_reading_direction">Направление чтения схемы</string>
+    <string name="theme_light">Светлая</string>
+    <string name="theme_dark">Тёмная</string>
+    <string name="theme_system">Как в системе</string>
+    <string name="direction_top_to_bottom">Сверху вниз</string>
+    <string name="direction_bottom_to_top">Снизу вверх</string>
+    <string name="about_version_format">Версия %1$s</string>
 </resources>
