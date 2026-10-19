@@ -20,6 +20,7 @@
     <string name="pattern_colors_legend_title">Цвета схемы</string>
     <string name="pattern_colors_legend_caption">петель каждого цвета</string>
 
+    <string name="action_more">Ещё</string>
     <string name="action_rename">Переименовать</string>
     <string name="action_reset_progress">Сбросить прогресс</string>
     <string name="action_delete">Удалить</string>
