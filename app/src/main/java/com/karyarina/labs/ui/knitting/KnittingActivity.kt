@@ -37,6 +37,7 @@ class KnittingActivity : AppCompatActivity() {
 
     private var pattern: Pattern? = null
     private var checkedRows = mutableSetOf<Int>()
+    private var reversed = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,7 +61,8 @@ class KnittingActivity : AppCompatActivity() {
             }
         }
         gridView.onRowToggle = { row -> toggleRow(row) }
-        gridView.setReversed(AppPreferences.isReverseDirection(this))
+        reversed = AppPreferences.isReverseDirection(this)
+        gridView.setReversed(reversed)
         gridView.setShowRowNumbers(AppPreferences.isShowRowNumbers(this))
         gridView.setShowGridLines(AppPreferences.isShowGridLines(this))
 
@@ -94,12 +96,15 @@ class KnittingActivity : AppCompatActivity() {
     }
 
     private fun updateHeader(totalRows: Int) {
-        val currentRow = (1..totalRows).firstOrNull { it !in checkedRows } ?: totalRows
-        textViewRowInfo.text = getString(R.string.knitting_row_info_format, currentRow, totalRows)
+        val currentOrderPos = (1..totalRows).firstOrNull { orderPos ->
+            val physicalRow = if (reversed) totalRows - orderPos + 1 else orderPos
+            physicalRow !in checkedRows
+        } ?: totalRows
+        textViewRowInfo.text = getString(R.string.knitting_row_info_format, currentOrderPos, totalRows)
         textViewRowsDone.text = getString(R.string.knitting_rows_done_format, checkedRows.size)
         progressBar.max = totalRows
         progressBar.progress = checkedRows.size
-        gridView.setCurrentRow(currentRow)
+        gridView.setCurrentRow(currentOrderPos)
     }
 
     private fun showColorLegend(bitmap: Bitmap) {

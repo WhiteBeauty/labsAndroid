@@ -152,10 +152,9 @@ class KnittingGridView @JvmOverloads constructor(
         val contentX = (viewX - translateX) / scaleFactor
         val contentY = (viewY - translateY) / scaleFactor
         if (contentX < 0f || contentX > checkboxColumnWidth) return
-        val physicalRow = (contentY / baseCellSize).toInt()
-        val rowNumber = if (reversed) rowCount - physicalRow else physicalRow + 1
-        if (rowNumber in 1..rowCount) {
-            onRowToggle?.invoke(rowNumber)
+        val physicalRowNumber = (contentY / baseCellSize).toInt() + 1
+        if (physicalRowNumber in 1..rowCount) {
+            onRowToggle?.invoke(physicalRowNumber)
         }
     }
 
@@ -168,10 +167,11 @@ class KnittingGridView @JvmOverloads constructor(
         canvas.scale(scaleFactor, scaleFactor)
 
         for (row in 0 until rowCount) {
-            val rowNumber = if (reversed) rowCount - row else row + 1
+            val physicalRowNumber = row + 1
+            val rowNumber = if (reversed) rowCount - row else physicalRowNumber
             val top = row * baseCellSize
             val bottom = top + baseCellSize
-            val isChecked = rowNumber in checkedRows
+            val isChecked = physicalRowNumber in checkedRows
 
             val boxPad = baseCellSize * 0.2f
             val boxRect = RectF(boxPad, top + boxPad, checkboxColumnWidth - boxPad, bottom - boxPad)
