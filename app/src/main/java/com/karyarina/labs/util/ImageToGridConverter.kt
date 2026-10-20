@@ -1,6 +1,9 @@
 package com.karyarina.labs.util
 
 import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
 import kotlin.math.roundToInt
 
 object ImageToGridConverter {
@@ -20,6 +23,32 @@ object ImageToGridConverter {
 
         val output = Bitmap.createBitmap(targetWidth, targetHeight, Bitmap.Config.ARGB_8888)
         output.setPixels(result, 0, targetWidth, 0, 0, targetWidth, targetHeight)
+        return output
+    }
+
+    fun renderWithGridLines(grid: Bitmap, cellSize: Int = 20): Bitmap {
+        val width = grid.width * cellSize
+        val height = grid.height * cellSize
+        val output = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(output)
+        val cellPaint = Paint()
+        val linePaint = Paint().apply {
+            style = Paint.Style.STROKE
+            strokeWidth = 1f
+            color = Color.argb(60, 0, 0, 0)
+        }
+
+        for (row in 0 until grid.height) {
+            val top = (row * cellSize).toFloat()
+            val bottom = top + cellSize
+            for (col in 0 until grid.width) {
+                val left = (col * cellSize).toFloat()
+                val right = left + cellSize
+                cellPaint.color = grid.getPixel(col, row)
+                canvas.drawRect(left, top, right, bottom, cellPaint)
+                canvas.drawRect(left, top, right, bottom, linePaint)
+            }
+        }
         return output
     }
 

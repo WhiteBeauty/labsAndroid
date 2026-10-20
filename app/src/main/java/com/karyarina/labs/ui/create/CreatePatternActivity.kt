@@ -68,7 +68,7 @@ class CreatePatternActivity : AppCompatActivity() {
 
         seekBarWidth.max = MAX_WIDTH - MIN_WIDTH
         seekBarWidth.progress = DEFAULT_WIDTH - MIN_WIDTH
-        textViewWidthValue.text = DEFAULT_WIDTH.toString()
+        textViewWidthValue.text = getString(R.string.width_label_format, DEFAULT_WIDTH)
 
         buttonPickImage.setOnClickListener {
             pickImage.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
@@ -76,7 +76,7 @@ class CreatePatternActivity : AppCompatActivity() {
 
         seekBarWidth.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-                textViewWidthValue.text = (progress + MIN_WIDTH).toString()
+                textViewWidthValue.text = getString(R.string.width_label_format, progress + MIN_WIDTH)
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {}
@@ -105,8 +105,11 @@ class CreatePatternActivity : AppCompatActivity() {
             val converted = withContext(Dispatchers.Default) {
                 ImageToGridConverter.convert(source, width, colors)
             }
+            val preview = withContext(Dispatchers.Default) {
+                ImageToGridConverter.renderWithGridLines(converted)
+            }
             gridBitmap = converted
-            imageViewPreview.setImageBitmap(converted)
+            imageViewPreview.setImageBitmap(preview)
             (imageViewPreview.drawable as? BitmapDrawable)?.isFilterBitmap = false
             textViewPreviewLabel.text = getString(R.string.preview_label_format, converted.width, converted.height)
         }

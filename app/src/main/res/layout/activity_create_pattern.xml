@@ -37,41 +37,27 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonPickImage"
-                style="@style/Widget.Material3.Button.OutlinedButton"
+                style="@style/Widget.Material3.Button.OutlinedButton.Icon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/button_pick_image" />
+                android:text="@string/button_pick_image"
+                app:icon="@android:drawable/ic_input_add"
+                app:iconGravity="textStart" />
 
             <TextView
+                android:id="@+id/textViewWidthValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/width_label" />
+                tools:text="Ширина, петель: 50" />
 
-            <LinearLayout
+            <SeekBar
+                android:id="@+id/seekBarWidth"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-
-                <SeekBar
-                    android:id="@+id/seekBarWidth"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <TextView
-                    android:id="@+id/textViewWidthValue"
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="end"
-                    android:textStyle="bold"
-                    tools:text="50" />
-
-            </LinearLayout>
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:layout_width="wrap_content"
