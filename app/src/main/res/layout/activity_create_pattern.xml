@@ -45,16 +45,6 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/button_pick_image" />
 
-            <ImageView
-                android:id="@+id/imageViewPreview"
-                android:layout_width="match_parent"
-                android:layout_height="220dp"
-                android:layout_marginTop="16dp"
-                android:adjustViewBounds="true"
-                android:background="@color/thumbnail_placeholder"
-                android:scaleType="fitCenter"
-                android:contentDescription="@null" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -134,6 +124,23 @@
                     android:text="8" />
 
             </com.google.android.material.chip.ChipGroup>
+
+            <TextView
+                android:id="@+id/textViewPreviewLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                tools:text="Превью (16 × 18)" />
+
+            <ImageView
+                android:id="@+id/imageViewPreview"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:layout_marginTop="8dp"
+                android:adjustViewBounds="true"
+                android:background="@color/thumbnail_placeholder"
+                android:scaleType="fitCenter"
+                android:contentDescription="@null" />
 
             <Button
                 android:id="@+id/buttonSave"

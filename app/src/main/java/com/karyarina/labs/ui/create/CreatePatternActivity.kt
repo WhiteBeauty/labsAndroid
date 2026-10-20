@@ -34,6 +34,7 @@ class CreatePatternActivity : AppCompatActivity() {
 
     private lateinit var editTextName: EditText
     private lateinit var imageViewPreview: ImageView
+    private lateinit var textViewPreviewLabel: TextView
     private lateinit var textViewWidthValue: TextView
     private lateinit var seekBarWidth: SeekBar
     private lateinit var buttonSave: Button
@@ -54,6 +55,7 @@ class CreatePatternActivity : AppCompatActivity() {
 
         editTextName = findViewById(R.id.editTextName)
         imageViewPreview = findViewById(R.id.imageViewPreview)
+        textViewPreviewLabel = findViewById(R.id.textViewPreviewLabel)
         textViewWidthValue = findViewById(R.id.textViewWidthValue)
         seekBarWidth = findViewById(R.id.seekBarWidth)
         buttonSave = findViewById(R.id.buttonSave)
@@ -106,6 +108,7 @@ class CreatePatternActivity : AppCompatActivity() {
             gridBitmap = converted
             imageViewPreview.setImageBitmap(converted)
             (imageViewPreview.drawable as? BitmapDrawable)?.isFilterBitmap = false
+            textViewPreviewLabel.text = getString(R.string.preview_label_format, converted.width, converted.height)
         }
     }
 
