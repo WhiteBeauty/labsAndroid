@@ -1,7 +1,47 @@
 <resources>
-    <string name="app_name">labs</string>
-    <string name="title_task">Вариант 5: нормализация списка по его максимальному элементу</string>
-    <string name="hint_size">Размер списка (1–30)</string>
-    <string name="button_generate">нормализовать</string>
-    <string name="placeholder_result">Результат будет здесь после нажатия</string>
+    <string name="app_name">StitchGrid</string>
+
+    <string name="main_screen_title">Мои схемы</string>
+    <string name="empty_state_text">Создайте первую схему</string>
+    <string name="content_description_add_pattern">Новая схема</string>
+    <string name="pattern_progress_format">%1$d / %2$d рядов</string>
+
+    <string name="title_create_pattern">Новая схема</string>
+    <string name="hint_pattern_name">Название</string>
+    <string name="button_pick_image">Выбрать картинку</string>
+    <string name="width_label_format">Ширина, петель: %1$d</string>
+    <string name="colors_label">Количество цветов</string>
+    <string name="button_save">Сохранить</string>
+    <string name="error_name_required">Укажите название</string>
+    <string name="preview_label_format">Превью (%1$d × %2$d)</string>
+
+    <string name="title_knitting">Вязание</string>
+    <string name="knitting_row_info_format">Ряд %1$d из %2$d</string>
+    <string name="knitting_rows_done_format">готово рядов: %1$d</string>
+    <string name="pattern_colors_legend_title">Цвета схемы</string>
+    <string name="pattern_colors_legend_caption">петель каждого цвета</string>
+
+    <string name="action_more">Ещё</string>
+    <string name="action_rename">Переименовать</string>
+    <string name="action_reset_progress">Сбросить прогресс</string>
+    <string name="action_delete">Удалить</string>
+    <string name="button_confirm">Да</string>
+    <string name="button_cancel">Отмена</string>
+    <string name="confirm_reset_message">Сбросить прогресс по схеме «%1$s»?</string>
+    <string name="confirm_delete_message">Удалить схему «%1$s»? Это действие нельзя отменить.</string>
+
+    <string name="title_settings">Настройки</string>
+    <string name="section_appearance">Внешний вид</string>
+    <string name="section_pattern">Схема</string>
+    <string name="section_about">О приложении</string>
+    <string name="setting_theme">Тема</string>
+    <string name="setting_reading_direction">Направление чтения схемы</string>
+    <string name="theme_light">Светлая</string>
+    <string name="theme_dark">Тёмная</string>
+    <string name="theme_system">Как в системе</string>
+    <string name="direction_top_to_bottom">Сверху вниз</string>
+    <string name="direction_bottom_to_top">Снизу вверх</string>
+    <string name="setting_show_row_numbers">Номера рядов</string>
+    <string name="setting_show_grid_lines">Линии сетки</string>
+    <string name="about_version_format">Версия %1$s</string>
 </resources>
