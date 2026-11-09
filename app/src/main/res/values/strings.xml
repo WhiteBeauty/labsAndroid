@@ -44,4 +44,8 @@
     <string name="setting_show_row_numbers">Номера рядов</string>
     <string name="setting_show_grid_lines">Линии сетки</string>
     <string name="about_version_format">Версия %1$s</string>
+    <string name="setting_language">Язык</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_english">English</string>
+    <string name="language_system">Как в системе</string>
 </resources>
