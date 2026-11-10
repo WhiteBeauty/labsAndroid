@@ -23,4 +23,34 @@
         <item name="checkedIconVisible">false</item>
         <item name="ensureMinTouchTargetSize">false</item>
     </style>
+    <style name="Widget.Labs.SettingsSection" parent="">
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.08</item>
+    </style>
+    <style name="Widget.Labs.SettingsCard" parent="">
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:background">@drawable/background_settings_card</item>
+        <item name="android:paddingHorizontal">16dp</item>
+        <item name="android:paddingVertical">12dp</item>
+        <item name="android:clipToOutline">true</item>
+    </style>
+    <style name="Widget.Labs.SettingsLabel" parent="">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+    <style name="Widget.Labs.SettingsValue" parent="">
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
+    </style>
+    <style name="Widget.Labs.SettingsSwitch" parent="Widget.Material3.CompoundButton.MaterialSwitch">
+        <item name="thumbTint">@color/white</item>
+        <item name="trackTint">@color/settings_switch_track</item>
+        <item name="thumbIcon">@null</item>
+        <item name="trackDecoration">@null</item>
+    </style>
 </resources>

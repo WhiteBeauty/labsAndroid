@@ -26,7 +26,7 @@ class SettingsActivity : AppCompatActivity() {
         val textViewDirectionValue = findViewById<TextView>(R.id.textViewDirectionValue)
         val switchShowRowNumbers = findViewById<MaterialSwitch>(R.id.switchShowRowNumbers)
         val switchShowGridLines = findViewById<MaterialSwitch>(R.id.switchShowGridLines)
-        val textViewAbout = findViewById<TextView>(R.id.textViewAbout)
+        val textViewVersion = findViewById<TextView>(R.id.textViewVersion)
 
         val languageValue = findViewById<TextView>(R.id.textViewLanguageValue)
         val languageTag = AppCompatDelegate.getApplicationLocales().toLanguageTags()
@@ -54,8 +54,7 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         val versionName = packageManager.getPackageInfo(packageName, 0).versionName
-        textViewAbout.text = "${getString(R.string.app_name)}\n" +
-            getString(R.string.about_version_format, versionName)
+        textViewVersion.text = getString(R.string.about_version_format, versionName)
     }
 
     private fun showLanguageDialog() {
