@@ -1,5 +1,7 @@
 <resources>
     <style name="Base.Theme.Labs" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:fontFamily">@font/stitch_sans</item>
+        <item name="fontFamily">@font/stitch_sans</item>
         <item name="colorPrimary">@color/stitch_primary</item>
         <item name="colorOnPrimary">@color/stitch_on_primary</item>
         <item name="colorPrimaryContainer">@color/stitch_surface_variant</item>

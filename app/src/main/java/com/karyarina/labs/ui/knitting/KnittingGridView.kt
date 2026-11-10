@@ -11,6 +11,7 @@ import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.ScaleGestureDetector
 import android.view.View
+import androidx.core.content.res.ResourcesCompat
 import com.karyarina.labs.R
 import kotlin.math.roundToInt
 
@@ -69,6 +70,7 @@ class KnittingGridView @JvmOverloads constructor(
     private val rowNumberPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         color = context.getColor(R.color.stitch_on_surface)
         textSize = spToPx(16f)
+        typeface = ResourcesCompat.getFont(context, R.font.stitch_sans)
     }
     private val gridLinePaint = Paint().apply {
         style = Paint.Style.STROKE

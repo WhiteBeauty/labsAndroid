@@ -9,7 +9,8 @@
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
+        app:titleTextAppearance="@style/TextAppearance.Labs.MainTitle"
         app:title="@string/title_knitting"
         app:navigationIcon="@drawable/ic_arrow_back" />
 
@@ -21,6 +22,7 @@
         android:paddingTop="8dp">
 
         <TextView
+            android:fontFamily="@font/stitch_sans"
             android:id="@+id/textViewRowInfo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -29,6 +31,7 @@
             tools:text="Ряд 8 из 18" />
 
         <TextView
+            android:fontFamily="@font/stitch_sans"
             android:id="@+id/textViewRowsDone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,6 +59,7 @@
         android:layout_weight="1" />
 
     <TextView
+        android:fontFamily="@font/stitch_sans"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
@@ -79,6 +83,7 @@
     </HorizontalScrollView>
 
     <TextView
+        android:fontFamily="@font/stitch_sans"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"

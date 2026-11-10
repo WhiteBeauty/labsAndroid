@@ -1,5 +1,7 @@
 <resources>
     <style name="TextAppearance.Labs.MainTitle" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:fontFamily">@font/stitch_sans</item>
+        <item name="fontFamily">@font/stitch_sans</item>
         <item name="android:textSize">22sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">?attr/colorOnSurface</item>
@@ -9,6 +11,8 @@
         <item name="cornerSize">20dp</item>
     </style>
     <style name="Widget.Labs.ColorChip" parent="Widget.Material3.Chip.Filter">
+        <item name="android:fontFamily">@font/stitch_sans</item>
+        <item name="fontFamily">@font/stitch_sans</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/chip_text</item>
@@ -26,6 +30,8 @@
     <style name="Widget.Labs.SettingsSection" parent="">
         <item name="android:layout_marginTop">24dp</item>
         <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:fontFamily">@font/stitch_sans</item>
+        <item name="fontFamily">@font/stitch_sans</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">?attr/colorPrimary</item>
         <item name="android:textAllCaps">true</item>
@@ -39,11 +45,15 @@
         <item name="android:clipToOutline">true</item>
     </style>
     <style name="Widget.Labs.SettingsLabel" parent="">
+        <item name="android:fontFamily">@font/stitch_sans</item>
+        <item name="fontFamily">@font/stitch_sans</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">?attr/colorOnSurface</item>
     </style>
     <style name="Widget.Labs.SettingsValue" parent="">
         <item name="android:layout_marginTop">2dp</item>
+        <item name="android:fontFamily">@font/stitch_sans</item>
+        <item name="fontFamily">@font/stitch_sans</item>
         <item name="android:textSize">13sp</item>
         <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
     </style>

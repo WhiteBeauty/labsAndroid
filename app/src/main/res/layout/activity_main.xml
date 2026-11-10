@@ -9,7 +9,7 @@
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
-        android:layout_height="76dp"
+        android:layout_height="56dp"
         app:titleTextAppearance="@style/TextAppearance.Labs.MainTitle"
         app:titleMarginStart="16dp"
         app:title="@string/main_screen_title"
@@ -32,6 +32,7 @@
         tools:listitem="@layout/item_pattern" />
 
     <TextView
+        android:fontFamily="@font/stitch_sans"
         android:id="@+id/textViewEmptyState"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

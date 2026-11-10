@@ -36,6 +36,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:fontFamily="@font/stitch_sans"
                 android:id="@+id/textViewName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -45,6 +46,7 @@
                 tools:text="Сердечко" />
 
             <TextView
+                android:fontFamily="@font/stitch_sans"
                 android:id="@+id/textViewProgress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
