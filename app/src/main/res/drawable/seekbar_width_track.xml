@@ -1,0 +1,16 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background" android:gravity="center_vertical" android:height="7dp">
+        <shape>
+            <solid android:color="@color/stitch_outline" />
+            <corners android:radius="4dp" />
+        </shape>
+    </item>
+    <item android:id="@android:id/progress" android:gravity="center_vertical" android:height="7dp">
+        <clip>
+            <shape>
+                <solid android:color="@color/stitch_primary" />
+                <corners android:radius="4dp" />
+            </shape>
+        </clip>
+    </item>
+</layer-list>

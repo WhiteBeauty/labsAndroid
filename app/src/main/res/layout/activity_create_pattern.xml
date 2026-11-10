@@ -4,19 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
     android:orientation="vertical">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="76dp"
+        app:titleTextAppearance="@style/TextAppearance.Labs.MainTitle"
         app:title="@string/title_create_pattern"
         app:navigationIcon="@drawable/ic_arrow_back" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,91 +27,130 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:labelFor="@id/editTextName"
+                android:text="@string/hint_pattern_name"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textSize="14sp" />
+
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                app:hintEnabled="false"
+                app:boxBackgroundColor="?attr/colorSurface"
+                app:boxStrokeColor="@color/stitch_outline"
+                app:boxCornerRadiusTopStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxCornerRadiusBottomEnd="12dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextName"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/hint_pattern_name"
-                    android:maxLines="1" />
-
+                    android:layout_height="52dp"
+                    android:inputType="textCapSentences"
+                    android:maxLines="1"
+                    android:paddingHorizontal="12dp"
+                    android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonPickImage"
                 style="@style/Widget.Material3.Button.OutlinedButton.Icon"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="52dp"
                 android:layout_marginTop="16dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
                 android:text="@string/button_pick_image"
-                app:icon="@android:drawable/ic_input_add"
+                android:textSize="16sp"
+                app:backgroundTint="?attr/colorSurface"
+                app:cornerRadius="26dp"
+                app:strokeColor="?attr/colorPrimary"
+                app:strokeWidth="2dp"
+                app:icon="@drawable/ic_add"
+                app:iconSize="20dp"
                 app:iconGravity="textStart" />
 
             <TextView
                 android:id="@+id/textViewWidthValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="18dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
                 tools:text="Ширина, петель: 50" />
 
             <SeekBar
                 android:id="@+id/seekBarWidth"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="40dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:splitTrack="false"
+                android:progressDrawable="@drawable/seekbar_width_track"
+                android:thumb="@drawable/seekbar_width_thumb"
+                android:thumbOffset="10dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/colors_label" />
+                android:layout_marginTop="4dp"
+                android:text="@string/colors_label"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/chipGroupColors"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="8dp"
+                app:chipSpacingHorizontal="8dp"
                 app:singleSelection="true"
                 app:selectionRequired="true">
-
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip2"
-                    style="@style/Widget.Material3.Chip.Filter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/Widget.Labs.ColorChip"
+                    android:layout_width="52dp"
+                    android:layout_height="40dp"
+
                     android:text="2" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip3"
-                    style="@style/Widget.Material3.Chip.Filter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/Widget.Labs.ColorChip"
+                    android:layout_width="52dp"
+                    android:layout_height="40dp"
+
                     android:text="3" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip4"
-                    style="@style/Widget.Material3.Chip.Filter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/Widget.Labs.ColorChip"
+                    android:layout_width="52dp"
+                    android:layout_height="40dp"
                     android:checked="true"
                     android:text="4" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip6"
-                    style="@style/Widget.Material3.Chip.Filter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/Widget.Labs.ColorChip"
+                    android:layout_width="52dp"
+                    android:layout_height="40dp"
+
                     android:text="6" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip8"
-                    style="@style/Widget.Material3.Chip.Filter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="8" />
+                    style="@style/Widget.Labs.ColorChip"
+                    android:layout_width="52dp"
+                    android:layout_height="40dp"
 
+                    android:text="8" />
             </com.google.android.material.chip.ChipGroup>
 
             <TextView
@@ -116,28 +158,34 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                tools:text="Превью (16 × 18)" />
+                android:text="@string/preview_label"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textSize="14sp" />
 
             <ImageView
                 android:id="@+id/imageViewPreview"
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
-                android:layout_marginTop="8dp"
-                android:adjustViewBounds="true"
-                android:background="@color/thumbnail_placeholder"
+                android:layout_height="260dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/background_create_preview"
+                android:padding="12dp"
                 android:scaleType="fitCenter"
                 android:contentDescription="@null" />
-
-            <Button
-                android:id="@+id/buttonSave"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:enabled="false"
-                android:text="@string/button_save" />
-
         </LinearLayout>
-
     </ScrollView>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonSave"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="20dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:enabled="false"
+        android:text="@string/button_save"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:cornerRadius="29dp" />
 </LinearLayout>
