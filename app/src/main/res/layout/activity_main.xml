@@ -3,12 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="76dp"
+        app:titleTextAppearance="@style/TextAppearance.Labs.MainTitle"
+        app:titleMarginStart="16dp"
         app:title="@string/main_screen_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,7 +22,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:clipToPadding="false"
-        android:paddingBottom="88dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="92dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,7 +50,10 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:contentDescription="@string/content_description_add_pattern"
-        android:src="@android:drawable/ic_input_add"
+        android:src="@drawable/ic_add"
+        app:fabCustomSize="58dp"
+        app:maxImageSize="28dp"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Labs.AddButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
