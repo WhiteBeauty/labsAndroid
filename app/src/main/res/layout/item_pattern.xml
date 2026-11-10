@@ -53,6 +53,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
+                android:progressTint="@color/stitch_primary"
+                android:progressBackgroundTint="@color/stitch_outline"
                 android:max="100"
                 tools:progress="40" />
 

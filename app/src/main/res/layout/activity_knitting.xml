@@ -44,6 +44,8 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginVertical="8dp"
+        android:progressTint="@color/stitch_primary"
+        android:progressBackgroundTint="@color/stitch_outline"
         android:max="100"
         tools:progress="40" />
 

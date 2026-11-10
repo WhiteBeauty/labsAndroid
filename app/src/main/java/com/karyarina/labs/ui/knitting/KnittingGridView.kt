@@ -3,7 +3,6 @@ package com.karyarina.labs.ui.knitting
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.RectF
 import android.util.AttributeSet
@@ -12,6 +11,7 @@ import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.ScaleGestureDetector
 import android.view.View
+import com.karyarina.labs.R
 import kotlin.math.roundToInt
 
 class KnittingGridView @JvmOverloads constructor(
@@ -49,31 +49,31 @@ class KnittingGridView @JvmOverloads constructor(
     private val checkboxPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.STROKE
         strokeWidth = dpToPx(1.5f)
-        color = Color.DKGRAY
+        color = context.getColor(R.color.stitch_on_surface)
     }
     private val checkmarkPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.STROKE
         strokeWidth = dpToPx(2f)
-        color = Color.DKGRAY
+        color = context.getColor(R.color.stitch_on_surface)
     }
-    private val overlayPaint = Paint().apply { color = Color.argb(140, 255, 255, 255) }
+    private val overlayPaint = Paint().apply { color = context.getColor(R.color.stitch_completed_overlay) }
     private val strikePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         strokeWidth = dpToPx(1.5f)
-        color = Color.DKGRAY
+        color = context.getColor(R.color.stitch_on_surface)
     }
     private val currentRowPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.STROKE
         strokeWidth = dpToPx(2f)
-        color = Color.parseColor("#D9A441")
+        color = context.getColor(R.color.stitch_secondary)
     }
     private val rowNumberPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        color = Color.DKGRAY
+        color = context.getColor(R.color.stitch_on_surface)
         textSize = spToPx(16f)
     }
     private val gridLinePaint = Paint().apply {
         style = Paint.Style.STROKE
         strokeWidth = dpToPx(0.5f)
-        color = Color.argb(60, 0, 0, 0)
+        color = context.getColor(R.color.stitch_outline)
     }
 
     private val scaleDetector = ScaleGestureDetector(
