@@ -1,9 +1,39 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+<resources>
     <style name="Base.Theme.Labs" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/stitch_primary</item>
+        <item name="colorOnPrimary">@color/stitch_on_primary</item>
+        <item name="colorPrimaryContainer">@color/stitch_surface_variant</item>
+        <item name="colorOnPrimaryContainer">@color/stitch_on_surface</item>
+        <item name="colorSecondary">@color/stitch_secondary</item>
+        <item name="colorOnSecondary">@color/stitch_on_secondary</item>
+        <item name="colorSecondaryContainer">@color/stitch_surface_variant</item>
+        <item name="colorOnSecondaryContainer">@color/stitch_on_surface</item>
+        <item name="android:colorBackground">@color/stitch_background</item>
+        <item name="colorOnBackground">@color/stitch_on_surface</item>
+        <item name="colorSurface">@color/stitch_surface</item>
+        <item name="colorOnSurface">@color/stitch_on_surface</item>
+        <item name="colorSurfaceVariant">@color/stitch_surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/stitch_on_surface_variant</item>
+        <item name="colorOutline">@color/stitch_outline</item>
+        <item name="colorOutlineVariant">@color/stitch_outline</item>
+        <item name="android:windowBackground">@color/stitch_background</item>
+        <item name="android:textColorPrimary">@color/stitch_on_surface</item>
+        <item name="android:textColorSecondary">@color/stitch_on_surface_variant</item>
+        <item name="colorAccent">@color/stitch_primary</item>
+        <item name="toolbarStyle">@style/Widget.Labs.Toolbar</item>
+        <item name="floatingActionButtonStyle">@style/Widget.Labs.FloatingActionButton</item>
     </style>
 
     <style name="Theme.Labs" parent="Base.Theme.Labs" />
+
+    <style name="Widget.Labs.Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="android:background">@color/stitch_surface_variant</item>
+        <item name="titleTextColor">@color/stitch_on_surface</item>
+        <item name="navigationIconTint">@color/stitch_on_surface</item>
+    </style>
+
+    <style name="Widget.Labs.FloatingActionButton" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="backgroundTint">@color/stitch_primary</item>
+        <item name="tint">@color/stitch_on_primary</item>
+    </style>
 </resources>
