@@ -3,6 +3,7 @@ package com.karyarina.labs.ui.create
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -20,6 +21,7 @@ import com.karyarina.labs.util.applyScreenInsets
 import com.karyarina.labs.R
 import com.karyarina.labs.data.AppDatabase
 import com.karyarina.labs.data.Pattern
+import com.karyarina.labs.ui.knitting.KnittingActivity
 import com.karyarina.labs.util.ImageToGridConverter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -139,7 +141,11 @@ class CreatePatternActivity : AppCompatActivity() {
                 createdAt = now,
                 updatedAt = now
             )
-            AppDatabase.getInstance(this@CreatePatternActivity).patternDao().insert(pattern)
+            val patternId = AppDatabase.getInstance(this@CreatePatternActivity)
+                .patternDao().insert(pattern)
+            val intent = Intent(this@CreatePatternActivity, KnittingActivity::class.java)
+                .putExtra(KnittingActivity.EXTRA_PATTERN_ID, patternId)
+            startActivity(intent)
             finish()
         }
     }
