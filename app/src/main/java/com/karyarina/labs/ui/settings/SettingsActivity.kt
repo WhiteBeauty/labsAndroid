@@ -5,8 +5,10 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.materialswitch.MaterialSwitch
+import com.karyarina.labs.util.applyScreenInsets
 import com.karyarina.labs.R
 import com.karyarina.labs.data.AppPreferences
 
@@ -15,6 +17,7 @@ class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
+        applyScreenInsets()
 
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
         toolbar.setNavigationOnClickListener { finish() }
@@ -25,8 +28,18 @@ class SettingsActivity : AppCompatActivity() {
         val textViewDirectionValue = findViewById<TextView>(R.id.textViewDirectionValue)
         val switchShowRowNumbers = findViewById<MaterialSwitch>(R.id.switchShowRowNumbers)
         val switchShowGridLines = findViewById<MaterialSwitch>(R.id.switchShowGridLines)
-        val textViewAbout = findViewById<TextView>(R.id.textViewAbout)
+        val textViewVersion = findViewById<TextView>(R.id.textViewVersion)
 
+        val languageValue = findViewById<TextView>(R.id.textViewLanguageValue)
+        val languageTag = AppCompatDelegate.getApplicationLocales().toLanguageTags()
+        languageValue.setText(when (languageTag.substringBefore("-")) {
+            "ru" -> R.string.language_russian
+            "en" -> R.string.language_english
+            else -> R.string.language_system
+        })
+        findViewById<android.view.View>(R.id.rowLanguage).setOnClickListener {
+            showLanguageDialog()
+        }
         updateThemeValue(textViewThemeValue)
         updateDirectionValue(textViewDirectionValue)
         rowTheme.setOnClickListener { showThemeDialog(textViewThemeValue) }
@@ -43,8 +56,30 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         val versionName = packageManager.getPackageInfo(packageName, 0).versionName
-        textViewAbout.text = "${getString(R.string.app_name)}\n" +
-            getString(R.string.about_version_format, versionName)
+        textViewVersion.text = getString(R.string.about_version_format, versionName)
+    }
+
+    private fun showLanguageDialog() {
+        val tags = arrayOf("ru", "en", "")
+        val options = arrayOf(
+            getString(R.string.language_russian),
+            getString(R.string.language_english),
+            getString(R.string.language_system)
+        )
+        val currentTag = AppCompatDelegate.getApplicationLocales().toLanguageTags()
+        val current = tags.indexOf(currentTag.substringBefore("-")).let {
+            if (it >= 0) it else 2
+        }
+        AlertDialog.Builder(this)
+            .setTitle(R.string.setting_language)
+            .setSingleChoiceItems(options, current) { dialog, which ->
+                dialog.dismiss()
+                AppCompatDelegate.setApplicationLocales(
+                    LocaleListCompat.forLanguageTags(tags[which])
+                )
+            }
+            .setNegativeButton(R.string.button_cancel, null)
+            .show()
     }
 
     private fun themeLabel(mode: Int): String = when (mode) {

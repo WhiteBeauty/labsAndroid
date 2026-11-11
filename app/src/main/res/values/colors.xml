@@ -2,5 +2,16 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="thumbnail_placeholder">#E6DCCF</color>
+    <color name="stitch_primary">#C0664A</color>
+    <color name="stitch_on_primary">#FFFFFF</color>
+    <color name="stitch_secondary">#D9A441</color>
+    <color name="stitch_on_secondary">#3B2F2A</color>
+    <color name="stitch_background">#FBF6EF</color>
+    <color name="stitch_surface">#FFFFFF</color>
+    <color name="stitch_on_surface">#3B2F2A</color>
+    <color name="stitch_outline">#E6DCCF</color>
+    <color name="stitch_surface_variant">#F3E9DD</color>
+    <color name="stitch_on_surface_variant">#78685F</color>
+    <color name="stitch_completed_overlay">#66000000</color>
+    <color name="thumbnail_placeholder">@color/stitch_outline</color>
 </resources>

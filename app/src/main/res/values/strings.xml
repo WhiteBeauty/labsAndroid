@@ -35,7 +35,7 @@
     <string name="section_pattern">Схема</string>
     <string name="section_about">О приложении</string>
     <string name="setting_theme">Тема</string>
-    <string name="setting_reading_direction">Направление чтения схемы</string>
+    <string name="setting_reading_direction">Направление чтения</string>
     <string name="theme_light">Светлая</string>
     <string name="theme_dark">Тёмная</string>
     <string name="theme_system">Как в системе</string>
@@ -44,4 +44,9 @@
     <string name="setting_show_row_numbers">Номера рядов</string>
     <string name="setting_show_grid_lines">Линии сетки</string>
     <string name="about_version_format">Версия %1$s</string>
+    <string name="setting_language">Язык</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_english">English</string>
+    <string name="language_system">Как в системе</string>
+    <string name="preview_label">Превью</string>
 </resources>

@@ -1,6 +1,7 @@
 package com.karyarina.labs.ui.main
 
 import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -51,6 +52,7 @@ class PatternAdapter(
 
             val thumbnail = BitmapFactory.decodeFile(pattern.gridPath)
             imageViewThumbnail.setImageBitmap(thumbnail)
+            (imageViewThumbnail.drawable as? BitmapDrawable)?.isFilterBitmap = false
 
             itemView.setOnClickListener { onPatternClick(pattern) }
             itemView.setOnLongClickListener {
