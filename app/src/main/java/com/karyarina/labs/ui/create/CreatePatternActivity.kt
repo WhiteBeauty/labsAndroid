@@ -3,6 +3,7 @@ package com.karyarina.labs.ui.create
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -16,9 +17,11 @@ import androidx.lifecycle.lifecycleScope
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
+import com.karyarina.labs.util.applyScreenInsets
 import com.karyarina.labs.R
 import com.karyarina.labs.data.AppDatabase
 import com.karyarina.labs.data.Pattern
+import com.karyarina.labs.ui.knitting.KnittingActivity
 import com.karyarina.labs.util.ImageToGridConverter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -52,6 +55,7 @@ class CreatePatternActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_pattern)
+        applyScreenInsets()
 
         editTextName = findViewById(R.id.editTextName)
         imageViewPreview = findViewById(R.id.imageViewPreview)
@@ -137,7 +141,11 @@ class CreatePatternActivity : AppCompatActivity() {
                 createdAt = now,
                 updatedAt = now
             )
-            AppDatabase.getInstance(this@CreatePatternActivity).patternDao().insert(pattern)
+            val patternId = AppDatabase.getInstance(this@CreatePatternActivity)
+                .patternDao().insert(pattern)
+            val intent = Intent(this@CreatePatternActivity, KnittingActivity::class.java)
+                .putExtra(KnittingActivity.EXTRA_PATTERN_ID, patternId)
+            startActivity(intent)
             finish()
         }
     }

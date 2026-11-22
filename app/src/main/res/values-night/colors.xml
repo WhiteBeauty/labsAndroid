@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="stitch_primary">#E3957B</color>
+    <color name="stitch_on_primary">#231C19</color>
+    <color name="stitch_secondary">#E8BE6A</color>
+    <color name="stitch_on_secondary">#231C19</color>
+    <color name="stitch_background">#231C19</color>
+    <color name="stitch_surface">#2E2522</color>
+    <color name="stitch_on_surface">#F2E8DF</color>
+    <color name="stitch_outline">#4A3D37</color>
+    <color name="stitch_surface_variant">#382D28</color>
+    <color name="stitch_on_surface_variant">#C6B6AA</color>
+    <color name="stitch_completed_overlay">#88000000</color>
+</resources>

@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.karyarina.labs.util.applyScreenInsets
 import com.karyarina.labs.R
 import com.karyarina.labs.data.AppDatabase
 import com.karyarina.labs.data.Pattern
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        applyScreenInsets()
 
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewPatterns)

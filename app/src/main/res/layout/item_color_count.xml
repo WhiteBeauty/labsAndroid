@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="16dp"
+    android:layout_marginEnd="24dp"
     android:gravity="center_vertical"
     android:orientation="horizontal">
 
@@ -14,10 +14,13 @@
         android:background="@drawable/shape_color_swatch" />
 
     <TextView
+        android:fontFamily="@font/stitch_sans"
         android:id="@+id/textViewColorCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
+        android:layout_marginStart="8dp"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="13sp"
         tools:text="110" />
 
 </LinearLayout>
